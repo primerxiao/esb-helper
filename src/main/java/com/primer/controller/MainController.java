@@ -1,6 +1,9 @@
 package com.primer.controller;
 
+import com.alibaba.excel.EasyExcel;
 import com.primer.MainApplication;
+import com.primer.entity.EsbExcelIndexData;
+import com.primer.entity.EsbExcelIndexDataListener;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +15,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @FXMLController
@@ -42,8 +46,11 @@ public class MainController implements Initializable {
         if (!file.isFile()) {
             return;
         }
-        //获取索引这个sheet
 
+        final EsbExcelIndexDataListener esbExcelIndexDataListener = new EsbExcelIndexDataListener();
+        //获取索引这个sheet
+        EasyExcel.read(file, EsbExcelIndexData.class, esbExcelIndexDataListener).sheet("索引").doRead();
+        final List<EsbExcelIndexData> list = esbExcelIndexDataListener.getList();
 
     }
 }
