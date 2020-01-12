@@ -1,7 +1,9 @@
 package com.primer.entity;
 
+import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.util.StringUtils;
 
 @Data
 @ToString
@@ -33,5 +35,32 @@ public class EsbExcelData {
     private String esbConstraintCondition;
     //备注
     private String esbRemark;
+
+    public String getLenght() {
+        if (StringUtils.isEmpty(srcDataLength)) {
+            String lengthByDataType = getLengthByDataType();
+            if (lengthByDataType.contains(",")) {
+                return lengthByDataType.trim().split(",")[0];
+            }
+            if (lengthByDataType.contains(",")) {
+                return lengthByDataType.trim().split("，")[0];
+            }
+        } else {
+            //判断是否有，号
+            if (srcDataLength.contains(",")) {
+                return srcDataLength.trim().split(",")[0];
+            }
+            if (srcDataLength.contains(",")) {
+                return srcDataLength.trim().split("，")[0];
+            }
+        }
+        return "0";
+    }
+
+    public String getLengthByDataType() {
+        final String[] split = srcDataType.split("\\(");
+        final String[] split1 = split[1].split("\\)");
+        return split1[0];
+    }
 
 }

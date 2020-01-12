@@ -35,4 +35,11 @@ public class EsbExcelIndexData {
     /**备注**/
     private String remark;
 
+    public String getServiceCode(){
+        return serviceName.split("\\(")[0];
+    }
+    public String getStageCode(){
+        return stageName.split("\\(")[0];
+    }
+
 }

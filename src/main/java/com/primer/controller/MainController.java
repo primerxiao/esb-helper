@@ -78,7 +78,7 @@ public class MainController implements Initializable {
 
         MainController.file = file;
         final EsbExcelIndexDataListener esbExcelIndexDataListener = new EsbExcelIndexDataListener();
-        //获取索引这个sheet
+        //获取索引这个sheet8
         EasyExcel.read(file, EsbExcelIndexData.class, esbExcelIndexDataListener).sheet("索引").doRead();
         final List<EsbExcelIndexData> list = esbExcelIndexDataListener.getList();
         if (list.size() <= 0) {
@@ -161,8 +161,8 @@ public class MainController implements Initializable {
         }
         int reqIndex = 0;
         int respIndex = 0;
-        int arrayStartIndex = 0;
-        int arrayEndIndex = 0;
+        int arrayStartIndex = -1;
+        int arrayEndIndex = -1;
         EsbExcelData arrayExcelData = null;
         for (int i = 0; i < list.size(); i++) {
             EsbExcelData esbExcelData = list.get(i);
@@ -188,8 +188,8 @@ public class MainController implements Initializable {
         //截取输出-输出的部分
         List<EsbExcelData> reqEsbExcelDataList = list.subList(reqIndex + 1, respIndex);
         //从输入-输出部分获取字段（除了array）
-        List<EsbExcelData> fieldList = reqEsbExcelDataList.subList(reqIndex + 1, arrayStartIndex);
-        if (arrayEndIndex < respIndex - 1) {
+        List<EsbExcelData> fieldList = ((arrayStartIndex>reqIndex)?reqEsbExcelDataList.subList(reqIndex + 1, arrayStartIndex):reqEsbExcelDataList);
+        if (arrayEndIndex < respIndex - 1 && arrayEndIndex > arrayStartIndex) {
             fieldList.addAll(reqEsbExcelDataList.subList(arrayEndIndex + 1, respIndex));
         }
         //获取array的字段
