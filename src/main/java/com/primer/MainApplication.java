@@ -12,7 +12,6 @@ import java.io.IOException;
 public class MainApplication extends AbstractJavaFxApplicationSupport {
 
     public static void main(String[] args) throws IOException {
-        //Platform.setImplicitExit(false);
         launch(MainApplication.class, MainView.class, new MySplashScreen(), args);
     }
 
