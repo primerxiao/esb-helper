@@ -38,6 +38,23 @@ public class Req${esbExcelIndexData.dealCode?cap_first}Info <#noparse>{</#nopars
     @JSONField(name = "${arrayExcelData.esbCnName}")
     private List<${arrayExcelData.srcEnName?cap_first}Info> ${arrayExcelData.srcEnName?uncap_first};
 </#if>
+<#list fieldList as fList>
+
+    public String get${fList.srcEnName?cap_first}(){
+        return this.${fList.srcEnName?uncap_first};
+    }
+    public void set${fList.srcEnName?cap_first}(String ${fList.srcEnName?uncap_first}){
+        this.${fList.srcEnName?uncap_first}=${fList.srcEnName?uncap_first};
+    }
+</#list>
+<#if arrayExcelData??>
+    public List<${arrayExcelData.srcEnName?cap_first}Info> get${arrayExcelData.srcEnName?cap_first}(){
+        return this.${arrayExcelData.srcEnName?uncap_first};
+        }
+        public void set${arrayExcelData.srcEnName?cap_first}(${arrayExcelData.srcEnName?cap_first}Info ${arrayExcelData.srcEnName?uncap_first}Info){
+        this.${arrayExcelData.srcEnName?uncap_first}=${arrayExcelData.srcEnName?uncap_first}Info;
+    }
+</#if>
 <#noparse>}</#noparse>
 
 
@@ -74,6 +91,14 @@ public class ${arrayExcelData.srcEnName?cap_first}Info <#noparse>{</#noparse>
     @Length(max = ${arrayList.lenght}, groups = {GroupeInterface.psd.class})
     private String ${arrayList.srcEnName?uncap_first};
 </#list>
+<#list arrayFieldList as arrayList>
 
+    public String get${arrayList.srcEnName?cap_first}(){
+    return this.${arrayList.srcEnName?uncap_first};
+    }
+    public void set${arrayList.srcEnName?cap_first}(String ${arrayList.srcEnName?uncap_first}){
+    this.${arrayList.srcEnName?uncap_first}=${arrayList.srcEnName?uncap_first};
+    }
+</#list>
 <#noparse>}</#noparse>
 </#if>

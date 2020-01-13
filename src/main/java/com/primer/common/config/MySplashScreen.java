@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 
 public class MySplashScreen extends SplashScreen {
 
-    private static String DEFAULT_IMAGE = "/start.png";
+    private static String DEFAULT_IMAGE = "/timg.gif";
 
     @Override
     public Parent getParent() {
@@ -23,7 +23,7 @@ public class MySplashScreen extends SplashScreen {
 
     @Override
     public boolean visible() {
-        return false;
+        return true;
     }
 
     @Override

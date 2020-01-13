@@ -36,6 +36,18 @@ public class EsbExcelData {
     //备注
     private String esbRemark;
 
+    public String getSrcCnName() {
+        if (StringUtils.isEmpty(srcCnName)) {
+            return "";
+        }
+        return srcCnName.replaceAll("\r\n","");
+    }
+    public String getEsbCnName() {
+        if (StringUtils.isEmpty(esbCnName)) {
+            return "";
+        }
+        return esbCnName.replaceAll("\r\n","");
+    }
     public String getLenght() {
         try {
             if (StringUtils.isEmpty(srcDataLength)) {
