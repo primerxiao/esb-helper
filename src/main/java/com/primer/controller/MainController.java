@@ -189,8 +189,8 @@ public class MainController implements Initializable {
         List<EsbExcelData> reqEsbExcelDataList = list.subList(reqIndex + 1, respIndex);
         //从输入-输出部分获取字段（除了array）
         List<EsbExcelData> fieldList = ((arrayStartIndex>reqIndex)?reqEsbExcelDataList.subList(reqIndex + 1, arrayStartIndex):reqEsbExcelDataList);
-        if (arrayEndIndex < respIndex - 1 && arrayEndIndex > arrayStartIndex) {
-            fieldList.addAll(reqEsbExcelDataList.subList(arrayEndIndex + 1, respIndex));
+        if (arrayEndIndex <= respIndex - 1 && arrayEndIndex > arrayStartIndex) {
+            fieldList.addAll(list.subList(arrayEndIndex + 1, respIndex));
         }
         //获取array的字段
         List<EsbExcelData> arrayFieldList = null;

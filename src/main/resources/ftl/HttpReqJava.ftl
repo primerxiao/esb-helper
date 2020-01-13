@@ -23,11 +23,11 @@ public class Req${esbExcelIndexData.dealCode?cap_first}Info <#noparse>{</#nopars
     /**
     * ${fList.srcCnName}
     */
-    @JSONField(name = "${fList.esbCnName}")
-    <#if fList.srcIsMustNeed=='是' >
+    @JSONField(name = "${fList.esbEnName}")
+    <#if fList.esbIsMustNeed??><#if (fList.esbIsMustNeed == 'Y'||fList.esbIsMustNeed == 'y') >
     @NotNull(groups = {GroupeInterface.psd.class})
     @NotEmpty(groups = {GroupeInterface.psd.class})
-    </#if>
+    </#if></#if>
     @Length(max = ${fList.lenght}, groups = {GroupeInterface.psd.class})
     private String ${fList.srcEnName?uncap_first};
 </#list>
@@ -62,17 +62,17 @@ import javax.validation.constraints.NotNull;
 */
 public class ${arrayExcelData.srcEnName?cap_first}Info <#noparse>{</#noparse>
 
-<#list arrayFieldList as fList>
+<#list arrayFieldList as arrayList>
     /**
-    * ${fList.srcCnName}
+    * ${arrayList.srcCnName}
     */
-    @JSONField(name = "${fList.esbCnName}")
-    <#if fList.srcIsMustNeed=='是' >
-        @NotNull(groups = {GroupeInterface.psd.class})
-        @NotEmpty(groups = {GroupeInterface.psd.class})
-    </#if>
-    @Length(max = ${fList.lenght}, groups = {GroupeInterface.psd.class})
-    private String ${fList.srcEnName?uncap_first};
+    @JSONField(name = "${arrayList.esbEnName}")
+    <#if arrayList.esbIsMustNeed??><#if (arrayList.esbIsMustNeed == 'Y'||arrayList.esbIsMustNeed == 'y') >
+    @NotNull(groups = {GroupeInterface.psd.class})
+    @NotEmpty(groups = {GroupeInterface.psd.class})
+    </#if></#if>
+    @Length(max = ${arrayList.lenght}, groups = {GroupeInterface.psd.class})
+    private String ${arrayList.srcEnName?uncap_first};
 </#list>
 
 <#noparse>}</#noparse>

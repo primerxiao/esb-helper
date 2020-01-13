@@ -21,10 +21,10 @@
             <items>
                 <Button fx:id="generateRequestJson" mnemonicParsing="false" onAction="#generateRequestJson"
                         prefHeight="43.0" prefWidth="114.0" text="生成请求报文"/>
-                <Button mnemonicParsing="false" onAction="#generateRequestJavaBean" prefHeight="43.0" prefWidth="114.0"
+                <Button mnemonicParsing="false" disable="false" onAction="#generateRequestJavaBean" prefHeight="43.0" prefWidth="114.0"
                         text="生成请求对象"/>
-                <Button mnemonicParsing="false" onAction="#generateRespJavaBean" prefHeight="43.0" prefWidth="114.0"
-                        text="生成相应对象"/>
+                <Button mnemonicParsing="false" disable="true" onAction="#generateRespJavaBean" prefHeight="43.0" prefWidth="114.0"
+                        text="生成响应对象"/>
             </items>
         </ToolBar>
         <Button fx:id="loadEsbExcel" layoutX="889.0" layoutY="13.0" mnemonicParsing="false" onAction="#loadEsbExcel"

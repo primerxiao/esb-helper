@@ -62,6 +62,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.primer.MainApplication</mainClass>
+                    <vendor>primerxiao</vendor>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

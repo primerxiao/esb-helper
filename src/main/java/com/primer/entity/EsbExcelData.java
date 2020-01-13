@@ -37,22 +37,27 @@ public class EsbExcelData {
     private String esbRemark;
 
     public String getLenght() {
-        if (StringUtils.isEmpty(srcDataLength)) {
-            String lengthByDataType = getLengthByDataType();
-            if (lengthByDataType.contains(",")) {
-                return lengthByDataType.trim().split(",")[0];
+        try {
+            if (StringUtils.isEmpty(srcDataLength)) {
+                String lengthByDataType = getLengthByDataType();
+                if (lengthByDataType.contains(",")) {
+                    return lengthByDataType.trim().split(",")[0];
+                }
+                if (lengthByDataType.contains("，")) {
+                    return lengthByDataType.trim().split("，")[0];
+                }
+            } else {
+                //判断是否有，号
+                if (srcDataLength.contains(",")) {
+                    return srcDataLength.trim().split(",")[0];
+                }
+                if (srcDataLength.contains("，")) {
+                    return srcDataLength.trim().split("，")[0];
+                }
+                return srcDataLength;
             }
-            if (lengthByDataType.contains(",")) {
-                return lengthByDataType.trim().split("，")[0];
-            }
-        } else {
-            //判断是否有，号
-            if (srcDataLength.contains(",")) {
-                return srcDataLength.trim().split(",")[0];
-            }
-            if (srcDataLength.contains(",")) {
-                return srcDataLength.trim().split("，")[0];
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return "0";
     }
